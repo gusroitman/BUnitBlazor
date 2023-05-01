@@ -1,6 +1,5 @@
 using BlazorApp1.Pages;
 using Bunit;
-using Xunit;
 
 namespace BlazorTestOne;
 
