@@ -1,0 +1,49 @@
+﻿@page "/Conversor"
+
+<h2>Conversor de Moneda</h2>
+
+<div>
+    <br />
+    <div id="cambio" class=" input-group w-75">
+        <label class="input-group-text ">Pesos Mexicanos : </label>
+        <input type="text" id="cambioDol" class="form-control w-25" @bind="pesosMexicanos">
+        <span class="input-group-btn">
+            <button class="btn btn-danger" type="button" @onclick="@(() => Convertir(pesosMexicanos))">Convertir</button>
+        </span>
+    </div>
+
+	<br />
+    <br />
+    <div id="cambiodolar" class="input-group mb-3 w-50">
+        <span class="input-group-text">Dolares : </span>
+        <input type="text" class="form-control" value="@dolares" readonly>
+    </div>
+    <div class="input-group mb-3 w-50">
+        <span class="input-group-text">Dolares Canadienses : </span>
+        <input type="text" class="form-control" value="@dolaresCanada" readonly>
+    </div>
+
+</div>
+
+
+
+
+@code {
+
+    private double pesosMexicanos;
+    private double dolares;
+    private double dolaresCanada;
+    private double rateUS = 0.053;
+    private double rateCanada = 0.072;
+
+    private void Convertir(double pesosMexicanos)
+    {
+        if (pesosMexicanos is not 0)
+        {
+            dolares = double.Round(pesosMexicanos * rateUS, 2, MidpointRounding.AwayFromZero);
+            dolaresCanada = double.Round(pesosMexicanos * rateCanada, 2, MidpointRounding.AwayFromZero);
+        }
+    }
+
+
+}
